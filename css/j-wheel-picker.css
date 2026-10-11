@@ -1,3 +1,9 @@
+/**
+ * JWheelPicker Stylesheet
+ * 
+ * Copyright (c) 2026 Ali Hashemi. All rights reserved.
+ */
+
 :root {
     --jwp-accent: var(--accent, #3273dc);
     --jwp-brand: var(--brand, #00d1b2);

@@ -1,3 +1,8 @@
+/**
+ * JWheelPicker
+ * 
+ * Copyright (c) 2026 Ali Hashemi. All rights reserved.
+ */
 class JWheelPicker {
     constructor(options = {}) {
         this.targetSelector = typeof options.target === 'string' ? options.target : null;
