@@ -1,0 +1,232 @@
+:root {
+    --jwp-accent: var(--accent, #3273dc);
+    --jwp-brand: var(--brand, #00d1b2);
+    --jwp-item-height: 40px;
+    --jwp-body-height: 280px;
+    --jwp-padding-y: calc((var(--jwp-body-height) - var(--jwp-item-height)) / 2);
+}
+
+/* Modal Overlay with Frosted Glass Blur */
+.jwp-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(10, 10, 10, 0.45);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+                visibility 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    direction: rtl;
+}
+
+.jwp-overlay.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Modal Box - Responsive dimensions */
+.jwp-container {
+    width: 100%;
+    max-width: 100vw;
+    max-height: 85vh;
+    background: #ffffff;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.18);
+    overflow: hidden;
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.jwp-overlay.is-active .jwp-container {
+    transform: translateY(0);
+}
+
+/* iOS Style Header */
+.jwp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    background: #fcfcfc;
+    flex-shrink: 0;
+}
+
+.jwp-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #2b2b2b;
+}
+
+.jwp-btn {
+    border: none;
+    background: transparent;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.jwp-btn-cancel {
+    color: #8c8c8c;
+}
+
+.jwp-btn-cancel:hover {
+    background: #f0f0f0;
+}
+
+.jwp-btn-confirm {
+    color: var(--jwp-accent);
+}
+
+.jwp-btn-confirm:hover {
+    opacity: 0.8;
+    background: rgba(50, 115, 220, 0.08);
+}
+
+/* Picker Wheels Body */
+.jwp-body {
+    position: relative;
+    height: var(--jwp-body-height);
+    background: #ffffff;
+    overflow: hidden;
+}
+
+/* iOS 3D Cylinder Mask (Fades top and bottom items) */
+.jwp-body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 3;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.96) 0%,
+        rgba(255, 255, 255, 0.72) 18%,
+        rgba(255, 255, 255, 0) 38%,
+        rgba(255, 255, 255, 0) 62%,
+        rgba(255, 255, 255, 0.72) 82%,
+        rgba(255, 255, 255, 0.96) 100%
+    );
+}
+
+/* iOS Central Selection Highlight Lens */
+.jwp-highlight {
+    position: absolute;
+    top: var(--jwp-padding-y);
+    left: 16px;
+    right: 16px;
+    height: var(--jwp-item-height);
+    background: rgba(0, 0, 0, 0.04);
+    border-radius: 10px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.jwp-wheel-container {
+    display: flex;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+/* Wheel Column with iOS Momentum and Snap */
+.jwp-wheel {
+    flex: 1;
+    height: 100%;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    overscroll-behavior-y: contain;
+}
+
+.jwp-error {
+    color: #b42318;
+    margin: 0;
+    padding: 12px 24px;
+    font-size: 0.9rem;
+}
+
+.jwp-btn:focus-visible,
+.jwp-wheel:focus-visible {
+    outline: 2px solid var(--jwp-accent);
+    outline-offset: -2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .jwp-overlay, .jwp-container, .jwp-item, .jwp-btn {
+        transition: none;
+    }
+}
+
+.jwp-wheel::-webkit-scrollbar {
+    display: none;
+}
+
+.jwp-wheel.is-dragging {
+    cursor: grabbing;
+    scroll-snap-type: none;
+}
+
+/* Dynamically aligns top and bottom items with center highlight */
+.jwp-wheel-list {
+    padding: var(--jwp-padding-y) 0;
+}
+
+.jwp-item {
+    height: var(--jwp-item-height);
+    line-height: var(--jwp-item-height);
+    text-align: center;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: #1f1f1f;
+    scroll-snap-align: center;
+    cursor: pointer;
+    transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.jwp-wheel:not(.is-dragging) .jwp-item:hover {
+    color: var(--jwp-accent);
+}
+
+/* Tablet & Desktop Large Display */
+@media screen and (min-width: 769px) {
+    .jwp-overlay {
+        align-items: center;
+    }
+
+    .jwp-container {
+        width: min(92vw, 560px);
+        border-radius: 20px;
+        transform: scale(0.94);
+        opacity: 0;
+        transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                    opacity 0.28s ease;
+    }
+
+    .jwp-overlay.is-active .jwp-container {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

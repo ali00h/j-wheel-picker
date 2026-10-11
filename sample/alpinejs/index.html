@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jalali Wheel Picker — Alpine.js</title>
+    <link rel="stylesheet" href="../../css/j-wheel-picker.css">
+    <link rel="stylesheet" href="../sample.css">
+    <script src="../../js/j-wheel-picker.js" defer></script>
+    <script src="app.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js" defer></script>
+</head>
+<body>
+<main x-data="dateExample">
+    <h1>Jalali Wheel Picker + Alpine.js</h1>
+    <p>Selections update Alpine's <code>x-model</code> through native input events.</p>
+    <section>
+        <h2>Single date</h2>
+        <label for="appointment">Appointment</label>
+        <input id="appointment" x-ref="appointment" x-model="date" readonly placeholder="YYYY/MM/DD" aria-haspopup="dialog">
+        <output x-text="date || 'No date selected.'" aria-live="polite"></output>
+    </section>
+    <section>
+        <h2>From / to range</h2>
+        <div class="fields">
+            <div><label for="from">From date</label><input id="from" x-ref="from" x-model="from" readonly placeholder="YYYY/MM/DD" aria-haspopup="dialog"></div>
+            <div><label for="to">To date</label><input id="to" x-ref="to" x-model="to" readonly placeholder="YYYY/MM/DD" aria-haspopup="dialog"></div>
+        </div>
+        <output x-text="from && to ? from + ' → ' + to : 'Choose both dates.'" aria-live="polite"></output>
+        <button type="button" class="clear" @click="from = ''; to = ''">Clear range</button>
+    </section>
+    <a href="../html/index.html">View the plain HTML example</a>
+</main>
+</body>
+</html>

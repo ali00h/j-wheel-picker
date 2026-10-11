@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jalali Wheel Picker — Plain HTML</title>
+    <link rel="stylesheet" href="../../css/j-wheel-picker.css">
+    <link rel="stylesheet" href="../sample.css">
+    <script src="../../js/j-wheel-picker.js" defer></script>
+    <script src="app.js" defer></script>
+</head>
+<body>
+<main>
+    <h1>Jalali Wheel Picker</h1>
+    <p>Plain HTML and JavaScript. Click a field, scroll or drag the wheels, then confirm.
+       You can also use Enter to open a field and arrow keys on each wheel.</p>
+    <section>
+        <h2>Single date</h2>
+        <label for="date">Appointment</label>
+        <input id="date" name="date" readonly placeholder="YYYY/MM/DD" aria-haspopup="dialog">
+        <output id="single-result" aria-live="polite">No date selected.</output>
+    </section>
+    <section>
+        <h2>From / to range</h2>
+        <div class="fields">
+            <div><label for="from">From date</label><input id="from" name="from" readonly placeholder="YYYY/MM/DD" aria-haspopup="dialog"></div>
+            <div><label for="to">To date</label><input id="to" name="to" readonly placeholder="YYYY/MM/DD" aria-haspopup="dialog"></div>
+        </div>
+        <output id="range-result" aria-live="polite">Choose both dates (same-day ranges are allowed).</output>
+        <button class="clear" id="clear" type="button">Clear range</button>
+    </section>
+    <a href="../alpinejs/index.html">View the Alpine.js example</a>
+</main>
+</body>
+</html>
