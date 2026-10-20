@@ -527,3 +527,8 @@ class JalaliWheelRangePicker {
         this.toPicker.destroy();
     }
 }
+
+// Keep the classic-script globals while also supporting CommonJS consumers.
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { JWheelPicker, JalaliWheelRangePicker };
+}

@@ -23,12 +23,23 @@ Copy `js/j-wheel-picker.js` and `css/j-wheel-picker.css` into your project. Load
 </script>
 ```
 
-No build step or package installation is required. Scripts expose `JWheelPicker` and `JalaliWheelRangePicker` as classic-script globals; this project does not ship an ES-module or npm package.
+Install from npm with `npm install j-wheel-picker`. The package exposes the CommonJS constructors `JWheelPicker` and `JalaliWheelRangePicker`; the original files remain usable as classic scripts too. Import the stylesheet separately:
+
+```js
+import 'j-wheel-picker/css';
+import { JWheelPicker, JalaliWheelRangePicker } from 'j-wheel-picker';
+```
+
+The picker requires a browser DOM. In SSR frameworks, create it only after the component mounts and call `destroy()` when the component unmounts.
 
 ## Examples
 
 - [Plain HTML](sample/html/index.html): independent single-date and range pickers, callbacks, and clearing a range.
 - [Alpine.js](sample/alpinejs/index.html): reactive `x-model` fields, initialization, and component cleanup.
+- [React](sample/react/DatePicker.jsx): reusable component for React and Next.js client components.
+- [Vue](sample/vue/DatePicker.vue): `v-model` component for Vue and Nuxt.js client components.
+
+For Next.js, add `'use client';` to the top of a file that imports and renders `DatePicker`. For Nuxt, place the component in a `.client.vue` file (or render it inside `<ClientOnly>`). These integrations initialize after mount, so the package itself does not run during server rendering.
 
 Open either HTML file directly in your browser, or serve the repository with your usual static server. The plain HTML example works offline. The Alpine.js example downloads pinned Alpine.js **3.14.9** from a CDN and needs internet access; replace that script URL with a local copy for offline use.
 

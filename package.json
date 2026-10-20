@@ -1,0 +1,16 @@
+{
+  "name": "j-wheel-picker",
+  "version": "1.0.0",
+  "description": "Dependency-free Persian (Jalali) wheel date picker for the browser",
+  "license": "MIT",
+  "type": "commonjs",
+  "main": "./js/j-wheel-picker.js",
+  "exports": {
+    ".": "./js/j-wheel-picker.js",
+    "./css": "./css/j-wheel-picker.css",
+    "./package.json": "./package.json"
+  },
+  "files": ["js/j-wheel-picker.js", "css/j-wheel-picker.css", "README.md", "LICENSE"],
+  "keywords": ["jalali", "persian", "date-picker", "wheel-picker", "datepicker"],
+  "sideEffects": ["./css/j-wheel-picker.css"]
+}
