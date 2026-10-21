@@ -1,1 +1,20 @@
-<!doctype html><html lang="fa" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>دموی React انتخابگر تاریخ جلالی</title><meta name="description" content="نمونهٔ فارسی React برای انتخاب تاریخ جلالی و مشاهدهٔ state تاریخ."><link rel="canonical" href="https://ali00h.github.io/j-wheel-picker/react/"><meta name="robots" content="index,follow"><link rel="stylesheet" href="../../css/j-wheel-picker.css"><link rel="stylesheet" href="../style.css"><script src="https://unpkg.com/react@18/umd/react.production.min.js" defer></script><script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" defer></script><script src="../../js/j-wheel-picker.js" defer></script><script src="app.js" defer></script></head><body><main><a href="../">بازگشت به صفحهٔ اصلی</a><header><h1>دموی React</h1><p>نمونهٔ مرورگری برای مشاهدهٔ مقدار انتخاب‌شده و callback.</p></header><div id="app"></div><nav><a href="../html/">HTML</a><a href="../alpinejs/">Alpine.js</a><a href="../vue/">Vue</a></nav></main></body></html>
+<!doctype html><html lang="fa" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>دموی React انتخابگر تاریخ جلالی</title><meta name="description" content="نمونهٔ فارسی React برای انتخاب تاریخ جلالی و مشاهدهٔ state تاریخ."><link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+<link rel="canonical" href="https://ali00h.github.io/j-wheel-picker/react/"><meta name="robots" content="index,follow"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/j-wheel-picker@1.0.0/css/j-wheel-picker.css"><link rel="stylesheet" href="../style.css"><script src="https://unpkg.com/react@18/umd/react.production.min.js" defer></script><script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/j-wheel-picker@1.0.0/js/j-wheel-picker.js" defer></script><script src="app.js" defer></script></head><body><main><a href="../">بازگشت به صفحهٔ اصلی</a><header><h1>دموی React</h1><p>نمونهٔ مرورگری برای مشاهدهٔ مقدار انتخاب‌شده و callback.</p><p><strong>روش استفاده:</strong> روی ورودی کلیک کنید، تاریخ را در چرخ‌ها انتخاب و تأیید کنید. مقدار نهایی از callback به state ری‌اکت می‌رسد و پایین فیلد نمایش داده می‌شود.</p></header><div id="app"></div><nav><a href="../html/">HTML</a><a href="../alpinejs/">Alpine.js</a><a href="../vue/">Vue</a></nav><section class="code-example"><h2>کد استفاده در React</h2><p>نمونهٔ پایه با <code>ref</code> برای ورودی و پاک‌سازی نمونه هنگام unmount شدن کامپوننت.</p><pre dir="ltr"><code>import { useEffect, useRef, useState } from 'react';
+
+function DateField() {
+  const input = useRef(null);
+  const [date, setDate] = useState('');
+
+  useEffect(() =&gt; {
+    const picker = new JWheelPicker({
+      target: input.current,
+      onSelect: value =&gt; setDate(value.formatted)
+    });
+    return () =&gt; picker.destroy();
+  }, []);
+
+  return &lt;&gt;
+    &lt;input ref={input} readOnly placeholder="YYYY/MM/DD" /&gt;
+    &lt;output&gt;{date}&lt;/output&gt;
+  &lt;/&gt;;
+}</code></pre></section></main></body></html>
