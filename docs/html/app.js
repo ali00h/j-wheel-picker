@@ -1,0 +1,3 @@
+new JWheelPicker({target:'#date',onSelect:d=>document.querySelector('#single-result').textContent='تاریخ انتخاب‌شده: '+d.formatted});
+new JalaliWheelRangePicker({from:'#from',to:'#to',onSelect:({from,to,complete})=>{document.querySelector('#range-result').textContent=complete?from.formatted+' تا '+to.formatted:'تاریخ دیگر بازه را هم انتخاب کنید.';}});
+document.querySelector('#clear').addEventListener('click',()=>{for(const id of ['#from','#to']){const input=document.querySelector(id);input.value='';input.dispatchEvent(new Event('input',{bubbles:true}));input.dispatchEvent(new Event('change',{bubbles:true}));}document.querySelector('#range-result').textContent='هر دو تاریخ را انتخاب کنید.';});

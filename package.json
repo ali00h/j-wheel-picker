@@ -2,6 +2,7 @@
   "name": "j-wheel-picker",
   "version": "1.0.0",
   "description": "Dependency-free Persian (Jalali) wheel date picker for the browser",
+  "homepage": "https://ali00h.github.io/j-wheel-picker/",
   "license": "MIT",
   "type": "commonjs",
   "main": "./js/j-wheel-picker.js",

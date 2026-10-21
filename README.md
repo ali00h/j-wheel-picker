@@ -34,6 +34,8 @@ The picker requires a browser DOM. In SSR frameworks, create it only after the c
 
 ## Examples
 
+Try the [online demos](https://ali00h.github.io/j-wheel-picker/) (Persian): [HTML](https://ali00h.github.io/j-wheel-picker/html/), [Alpine.js](https://ali00h.github.io/j-wheel-picker/alpinejs/), [React](https://ali00h.github.io/j-wheel-picker/react/), and [Vue](https://ali00h.github.io/j-wheel-picker/vue/).
+
 - [Plain HTML](sample/html/index.html): independent single-date and range pickers, callbacks, and clearing a range.
 - [Alpine.js](sample/alpinejs/index.html): reactive `x-model` fields, initialization, and component cleanup.
 - [React](sample/react/DatePicker.jsx): reusable component for React and Next.js client components.
